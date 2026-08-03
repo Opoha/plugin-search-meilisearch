@@ -1,6 +1,6 @@
 {
   "name": "@opoha/plugin-search-meilisearch",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Official Opoha Meilisearch search provider plugin (Phase 4 A-04)",
   "license": "MIT",
   "type": "module",
@@ -18,7 +18,7 @@
   ],
   "opoha": {
     "id": "search-meilisearch",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "contractVersion": "0.1",
     "entry": "dist/index.js",
     "displayName": "Meilisearch",
@@ -26,7 +26,9 @@
     "dependsOn": [],
     "required": false,
     "engines": {
-      "search": ["meilisearch"]
+      "search": [
+        "meilisearch"
+      ]
     }
   },
   "scripts": {
