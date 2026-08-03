@@ -1,0 +1,53 @@
+{
+  "name": "@opoha/plugin-search-meilisearch",
+  "version": "0.1.0",
+  "description": "Official Opoha Meilisearch search provider plugin (Phase 4 A-04)",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "opoha.plugin.json"
+  ],
+  "opoha": {
+    "id": "search-meilisearch",
+    "version": "0.1.0",
+    "contractVersion": "0.1",
+    "entry": "dist/index.js",
+    "displayName": "Meilisearch",
+    "description": "Registers a Meilisearch search provider that indexes catalog products and serves searchProducts queries via the core SearchEngine",
+    "dependsOn": [],
+    "required": false,
+    "engines": {
+      "search": ["meilisearch"]
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "dev": "tsc -p tsconfig.build.json --watch",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@opoha/plugin-sdk": "file:../opoha-plugin-sdk",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@opoha/typescript-config": "file:../opoha-devkit/packages/typescript-config",
+    "@opoha/vitest-config": "file:../opoha-devkit/packages/vitest-config",
+    "@types/node": "^22.13.10",
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.8"
+  },
+  "packageManager": "pnpm@11.7.0"
+}
