@@ -1,6 +1,6 @@
 {
   "name": "@opoha/plugin-search-meilisearch",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Official Opoha Meilisearch search provider plugin",
   "license": "MIT",
   "type": "module",
@@ -13,6 +13,8 @@
     }
   },
   "files": [
+    "LICENSE",
+    "README.md",
     "dist",
     "opoha.plugin.json"
   ],

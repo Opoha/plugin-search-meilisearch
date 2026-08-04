@@ -1,5 +1,11 @@
 # Meilisearch Search Plugin
 
+| | |
+| --- | --- |
+| npm | `@opoha/plugin-search-meilisearch` |
+| Repo | [Opoha/plugin-search-meilisearch](https://github.com/Opoha/plugin-search-meilisearch) |
+
+
 Official `@opoha/plugin-search-meilisearch` — registers a `SearchProvider` with the Opoha core `SearchEngine`.
 
 Core never imports this package or a Meilisearch client — it only calls `SearchEngine.indexDocument` / `deleteDocument` / `search`, which the plugin-loader routes to whichever `SearchProvider` a plugin has registered (`core-module-boundaries-design.md`).
@@ -17,6 +23,14 @@ Documents are indexed per type into `${OPOHA_MEILISEARCH_INDEX_PREFIX}_${type}s`
 
 See `.env.example` — `OPOHA_MEILISEARCH_HOST`, `OPOHA_MEILISEARCH_API_KEY` (secret, never committed), `OPOHA_MEILISEARCH_INDEX_PREFIX`, `OPOHA_MEILISEARCH_ENABLED`.
 
+## Install
+
+```bash
+pnpm add @opoha/plugin-search-meilisearch
+```
+
+Add the package to your app `opoha.config.json` `"plugins"` array (or set `OPOHA_PLUGINS` / `OPOHA_PLUGINS_PATH` for a local checkout).
+
 ## Load
 
 ```bash
@@ -31,3 +45,7 @@ Core discovers via `OPOHA_PLUGINS` / `OPOHA_PLUGINS_PATH` and dynamically import
 ```bash
 docker run -p 7700:7700 getmeili/meilisearch:latest
 ```
+
+## License
+
+MIT © [Opoha](https://github.com/Opoha)
