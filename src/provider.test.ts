@@ -2,10 +2,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { MeilisearchClient } from './client.js';
 import { createMeilisearchProvider } from './provider.js';
-import {
-  resetMeilisearchConfigForTests,
-  setMeilisearchConfig,
-} from './settings.js';
+import { resetMeilisearchConfigForTests, setMeilisearchConfig } from './settings.js';
 
 describe('createMeilisearchProvider (Phase 4 A-04 — Meilisearch shapes)', () => {
   let addOrUpdateDocuments: ReturnType<typeof vi.fn>;

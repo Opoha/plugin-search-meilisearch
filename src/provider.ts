@@ -14,9 +14,7 @@ import {
   meilisearchIndexUid,
 } from './settings.js';
 
-function toMeilisearchDocument(
-  document: SearchDocument,
-): Record<string, unknown> {
+function toMeilisearchDocument(document: SearchDocument): Record<string, unknown> {
   return {
     id: document.id,
     title: document.title,
@@ -37,10 +35,7 @@ function fromMeilisearchHit(
     score: typeof hit._rankingScore === 'number' ? hit._rankingScore : undefined,
     title: typeof hit.title === 'string' ? hit.title : undefined,
     slug: typeof hit.slug === 'string' ? hit.slug : undefined,
-    highlight:
-      typeof formatted?.description === 'string'
-        ? formatted.description
-        : undefined,
+    highlight: typeof formatted?.description === 'string' ? formatted.description : undefined,
   };
 }
 
@@ -50,10 +45,8 @@ function fromMeilisearchHit(
  * without a restart (mirrors flat-rate shipping's env-first + runtime config).
  */
 export function createMeilisearchProvider(
-  clientFactory: (host: string, apiKey?: string) => MeilisearchClient = (
-    host,
-    apiKey,
-  ) => new MeilisearchClient({ host, apiKey }),
+  clientFactory: (host: string, apiKey?: string) => MeilisearchClient = (host, apiKey) =>
+    new MeilisearchClient({ host, apiKey }),
 ): SearchProvider {
   return {
     code: 'meilisearch',
@@ -67,9 +60,7 @@ export function createMeilisearchProvider(
       }
       const client = clientFactory(config.host, meilisearchApiKeyFromEnv());
       const indexUid = meilisearchIndexUid(config, document.type);
-      await client.addOrUpdateDocuments(indexUid, [
-        toMeilisearchDocument(document),
-      ]);
+      await client.addOrUpdateDocuments(indexUid, [toMeilisearchDocument(document)]);
     },
 
     async deleteDocument(input: SearchDeleteInput): Promise<void> {

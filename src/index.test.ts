@@ -55,10 +55,7 @@ describe('plugin-search-meilisearch (Phase 4 A-04)', () => {
 
     expect(registerAdmin).toHaveBeenCalledWith(
       expect.objectContaining({
-        permissions: [
-          'plugin:search-meilisearch:read',
-          'plugin:search-meilisearch:configure',
-        ],
+        permissions: ['plugin:search-meilisearch:read', 'plugin:search-meilisearch:configure'],
       }),
     );
   });

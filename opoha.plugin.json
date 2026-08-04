@@ -8,8 +8,6 @@
   "dependsOn": [],
   "required": false,
   "engines": {
-    "search": [
-      "meilisearch"
-    ]
+    "search": ["meilisearch"]
   }
 }

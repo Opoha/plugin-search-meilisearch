@@ -64,10 +64,7 @@ export class MeilisearchClient {
     return headers;
   }
 
-  private async request<T>(
-    path: string,
-    init: { method: string; body?: unknown },
-  ): Promise<T> {
+  private async request<T>(path: string, init: { method: string; body?: unknown }): Promise<T> {
     const response = await this.fetchImpl(`${this.host}${path}`, {
       method: init.method,
       headers: this.headers(),
@@ -85,16 +82,13 @@ export class MeilisearchClient {
     indexUid: string,
     documents: Array<Record<string, unknown>>,
   ): Promise<MeilisearchTask> {
-    return this.request<MeilisearchTask>(
-      `/indexes/${encodeURIComponent(indexUid)}/documents`,
-      { method: 'PUT', body: documents },
-    );
+    return this.request<MeilisearchTask>(`/indexes/${encodeURIComponent(indexUid)}/documents`, {
+      method: 'PUT',
+      body: documents,
+    });
   }
 
-  async deleteDocument(
-    indexUid: string,
-    documentId: string,
-  ): Promise<MeilisearchTask> {
+  async deleteDocument(indexUid: string, documentId: string): Promise<MeilisearchTask> {
     return this.request<MeilisearchTask>(
       `/indexes/${encodeURIComponent(indexUid)}/documents/${encodeURIComponent(documentId)}`,
       { method: 'DELETE' },

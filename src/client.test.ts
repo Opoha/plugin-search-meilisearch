@@ -18,7 +18,12 @@ describe('MeilisearchClient', () => {
 
   it('upserts documents via PUT /indexes/:indexUid/documents with bearer auth', async () => {
     fetchMock.mockResolvedValue(
-      jsonResponse({ taskUid: 1, indexUid: 'opoha_products', status: 'enqueued', type: 'documentAdditionOrUpdate' }),
+      jsonResponse({
+        taskUid: 1,
+        indexUid: 'opoha_products',
+        status: 'enqueued',
+        type: 'documentAdditionOrUpdate',
+      }),
     );
     const client = new MeilisearchClient({
       host: 'http://localhost:7700',
@@ -46,7 +51,12 @@ describe('MeilisearchClient', () => {
 
   it('deletes a document via DELETE /indexes/:indexUid/documents/:id', async () => {
     fetchMock.mockResolvedValue(
-      jsonResponse({ taskUid: 2, indexUid: 'opoha_products', status: 'enqueued', type: 'documentDeletion' }),
+      jsonResponse({
+        taskUid: 2,
+        indexUid: 'opoha_products',
+        status: 'enqueued',
+        type: 'documentDeletion',
+      }),
     );
     const client = new MeilisearchClient({
       host: 'http://localhost:7700',
@@ -91,17 +101,13 @@ describe('MeilisearchClient', () => {
   });
 
   it('throws MeilisearchApiError on non-2xx responses', async () => {
-    fetchMock.mockResolvedValue(
-      new Response('index not found', { status: 404 }),
-    );
+    fetchMock.mockResolvedValue(new Response('index not found', { status: 404 }));
     const client = new MeilisearchClient({
       host: 'http://localhost:7700',
       fetchImpl: fetchMock as unknown as typeof fetch,
     });
 
-    await expect(client.search('missing_index', 'x')).rejects.toBeInstanceOf(
-      MeilisearchApiError,
-    );
+    await expect(client.search('missing_index', 'x')).rejects.toBeInstanceOf(MeilisearchApiError);
   });
 
   it('strips trailing slashes from host', async () => {

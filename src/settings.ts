@@ -13,8 +13,7 @@ export const meilisearchConfigSchema = z.object({
 
 export type MeilisearchConfig = z.infer<typeof meilisearchConfigSchema>;
 
-export const DEFAULT_MEILISEARCH_CONFIG: MeilisearchConfig =
-  meilisearchConfigSchema.parse({});
+export const DEFAULT_MEILISEARCH_CONFIG: MeilisearchConfig = meilisearchConfigSchema.parse({});
 
 let runtimeConfig: MeilisearchConfig = { ...DEFAULT_MEILISEARCH_CONFIG };
 
@@ -39,18 +38,14 @@ export function meilisearchConfigFromEnv(
     } else if (['0', 'false', 'no', 'off'].includes(normalized)) {
       partial.enabled = false;
     } else {
-      throw new Error(
-        `OPOHA_MEILISEARCH_ENABLED must be a boolean-like value (got ${enabledRaw})`,
-      );
+      throw new Error(`OPOHA_MEILISEARCH_ENABLED must be a boolean-like value (got ${enabledRaw})`);
     }
   }
   return partial;
 }
 
 /** Secret API key read directly from env — never stored on the config object. */
-export function meilisearchApiKeyFromEnv(
-  env: NodeJS.ProcessEnv = process.env,
-): string | undefined {
+export function meilisearchApiKeyFromEnv(env: NodeJS.ProcessEnv = process.env): string | undefined {
   const apiKey = env.OPOHA_MEILISEARCH_API_KEY?.trim();
   return apiKey && apiKey.length > 0 ? apiKey : undefined;
 }
@@ -59,9 +54,7 @@ export function getMeilisearchConfig(): MeilisearchConfig {
   return { ...runtimeConfig };
 }
 
-export function setMeilisearchConfig(
-  input: Partial<MeilisearchConfig>,
-): MeilisearchConfig {
+export function setMeilisearchConfig(input: Partial<MeilisearchConfig>): MeilisearchConfig {
   runtimeConfig = meilisearchConfigSchema.parse({
     ...runtimeConfig,
     ...input,

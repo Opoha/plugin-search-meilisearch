@@ -69,10 +69,7 @@ export default definePlugin({
           permission: 'plugin:search-meilisearch:configure',
         },
       ],
-      permissions: [
-        'plugin:search-meilisearch:read',
-        'plugin:search-meilisearch:configure',
-      ],
+      permissions: ['plugin:search-meilisearch:read', 'plugin:search-meilisearch:configure'],
     });
   },
 });
