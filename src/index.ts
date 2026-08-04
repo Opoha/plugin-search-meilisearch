@@ -29,7 +29,7 @@ export {
 export type { MeilisearchConfig } from './settings.js';
 
 /**
- * Official Meilisearch search plugin (Phase 4 A-04).
+ * Official Meilisearch search plugin.
  * Registers a SearchProvider that indexes catalog products and serves
  * `searchProducts` queries via the core SearchEngine — core never imports
  * this package or any Meilisearch client (boundary: core-module-boundaries-design.md).

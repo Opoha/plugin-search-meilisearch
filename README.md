@@ -1,6 +1,6 @@
 # Meilisearch Search Plugin
 
-Official `@opoha/plugin-search-meilisearch` — registers a `SearchProvider` with the Opoha core `SearchEngine` (Phase 4 A-04 / search gate).
+Official `@opoha/plugin-search-meilisearch` — registers a `SearchProvider` with the Opoha core `SearchEngine`.
 
 Core never imports this package or a Meilisearch client — it only calls `SearchEngine.indexDocument` / `deleteDocument` / `search`, which the plugin-loader routes to whichever `SearchProvider` a plugin has registered (`core-module-boundaries-design.md`).
 
@@ -11,7 +11,7 @@ Core never imports this package or a Meilisearch client — it only calls `Searc
 - Admin settings + nav under `/plugins/search-meilisearch`
 - Permissions `plugin:search-meilisearch:read` / `plugin:search-meilisearch:configure`
 
-Documents are indexed per type into `${OPOHA_MEILISEARCH_INDEX_PREFIX}_${type}s` (e.g. `opoha_products`). Products flow in automatically via core catalog event listeners (Phase 4 A-03) publishing `ProductCreated` / `ProductUpdated` / `ProductDeleted`.
+Documents are indexed per type into `${OPOHA_MEILISEARCH_INDEX_PREFIX}_${type}s` (e.g. `opoha_products`). Products flow in automatically via core catalog event listeners publishing `ProductCreated` / `ProductUpdated` / `ProductDeleted`.
 
 ## Configuration
 
