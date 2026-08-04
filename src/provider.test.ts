@@ -4,7 +4,7 @@ import { MeilisearchClient } from './client.js';
 import { createMeilisearchProvider } from './provider.js';
 import { resetMeilisearchConfigForTests, setMeilisearchConfig } from './settings.js';
 
-describe('createMeilisearchProvider (Phase 4 A-04 — Meilisearch shapes)', () => {
+describe('createMeilisearchProvider (Meilisearch shapes)', () => {
   let addOrUpdateDocuments: ReturnType<typeof vi.fn>;
   let deleteDocument: ReturnType<typeof vi.fn>;
   let search: ReturnType<typeof vi.fn>;

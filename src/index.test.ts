@@ -25,7 +25,7 @@ function createContext() {
   return { ctx, registerSearchProvider, registerGraphQL, registerAdmin };
 }
 
-describe('plugin-search-meilisearch (Phase 4 A-04)', () => {
+describe('plugin-search-meilisearch', () => {
   afterEach(() => {
     resetMeilisearchConfigForTests();
     delete process.env.OPOHA_MEILISEARCH_HOST;
